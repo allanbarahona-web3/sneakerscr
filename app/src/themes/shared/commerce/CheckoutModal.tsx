@@ -25,6 +25,8 @@ const checkoutSchema = z.object({
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
+export type { CheckoutFormValues };
+
 interface CartItem {
   id: string;
   name: string;
@@ -41,6 +43,8 @@ interface ShippingOption {
   price: number;
   days: string;
 }
+
+export type { ShippingOption };
 
 interface CheckoutModalProps {
   isOpen: boolean;
