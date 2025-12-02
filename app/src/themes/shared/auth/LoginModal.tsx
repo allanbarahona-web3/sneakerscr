@@ -18,7 +18,7 @@ const getLoginSchema = (lang: Language) =>
   z.object({
     email: z.string().email(t(lang).login.errors.invalidEmail).min(1, t(lang).login.errors.invalidEmail),
     password: z.string().min(6, t(lang).login.errors.passwordMin).min(1, t(lang).login.errors.passwordMin),
-    tenantId: z.coerce.number().min(1, t(lang).login.errors.tenantIdRequired),
+    tenantId: z.number().min(1, t(lang).login.errors.tenantIdRequired),
   });
 
 type LoginFormValues = z.infer<ReturnType<typeof getLoginSchema>>;
@@ -182,6 +182,8 @@ export function LoginModal({
                           type="number"
                           placeholder="1"
                           {...field}
+                          value={field.value || ''}
+                          onChange={(e) => field.onChange(e.target.value ? parseInt(e.target.value, 10) : '')}
                           disabled={isLoading}
                           className="text-xs sm:text-sm h-10 sm:h-11"
                         />
