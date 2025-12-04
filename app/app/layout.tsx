@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   description: 'Platform para gestionar múltiples tiendas virtuales con dominios personalizados',
   manifest: '/manifest.json',
   themeColor: '#D4FF00',
+  icons: {
+    icon: '/themes/tactika-x/X Favicon.png',
+    apple: '/themes/tactika-x/X Favicon.png',
+  },
 };
 
 interface RootLayoutProps {
@@ -19,6 +23,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/themes/tactika-x/X Favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/themes/tactika-x/X Favicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#D4FF00" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
