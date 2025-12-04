@@ -56,20 +56,14 @@ export function TactikaXHeader({ cartCount, onCartClick, onLoginClick }: HeaderP
       <div className="container">
         <div className="header-content">
           <div className="logo-container">
-            <div className="logo">
-              <Image 
-                src="/themes/tactika-x/logo.png"
-                alt="TACTIKA-X Logo"
-                width={80}
-                height={80}
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="brand-text">
-              <h1>{name}</h1>
-              <p>{tagline}</p>
-            </div>
+            <Image 
+              src="/themes/tactika-x/logo.png"
+              alt="TACTIKA-X Logo"
+              width={90}
+              height={90}
+              className="object-contain"
+              priority
+            />
           </div>
           <div className="header-actions">
             <div className="search-box">
