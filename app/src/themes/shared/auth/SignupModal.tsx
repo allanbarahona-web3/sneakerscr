@@ -170,7 +170,7 @@ export function SignupModal({
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-3 sm:p-4 md:p-6">
+    <div className="min-h-dvh flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-3 sm:p-4 md:p-6">
       {/* Language Switcher */}
       <div className="absolute top-3 sm:top-6 right-3 sm:right-6 flex items-center gap-1 sm:gap-2 bg-white rounded-full p-0.5 sm:p-1 shadow-sm z-10">
         <button

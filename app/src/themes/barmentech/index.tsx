@@ -12,7 +12,7 @@ import { LanguageProvider } from './context/LanguageContext';
 export default function BarmentechPage() {
   return (
     <LanguageProvider>
-      <main className="min-h-screen">
+      <main className="min-h-dvh">
         <Header />
         <Hero />
         <Templates />

@@ -84,7 +84,7 @@ export function LoginModal({
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-3 sm:p-4 md:p-6">
+    <div className="min-h-dvh flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-3 sm:p-4 md:p-6">
       <div className="w-full max-w-md mx-auto">
         {/* Card Container */}
         <Card className="border-gray-100 shadow-2xl overflow-hidden backdrop-blur-xl">

@@ -147,7 +147,7 @@ export function ContactForm({
 
       {/* Modal */}
       <div className="fixed inset-0 z-65 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
-        <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto pointer-events-auto">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90dvh] overflow-y-auto pointer-events-auto">
           {/* Header */}
           <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
             <div>

@@ -100,7 +100,7 @@ export function CartComponent({
 
   if (localItems.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+      <div className="min-h-dvh bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
         <Card className="w-full max-w-md p-8 sm:p-12 text-center">
           <ShoppingCart size={64} className="mx-auto text-gray-400 mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">{emptyMessage}</h2>
@@ -116,7 +116,7 @@ export function CartComponent({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 md:p-8">
+    <div className="min-h-dvh bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8 flex justify-between items-center">
