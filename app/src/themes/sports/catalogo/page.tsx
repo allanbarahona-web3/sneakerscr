@@ -4,15 +4,18 @@ import { useState } from 'react';
 import { ProductCard } from '../components/product-card';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
-import { CartProvider } from '../context/CartContext';
+import { CartProvider, useSportsCart } from '../context/CartContext';
 import { ContactForm } from '@/themes/shared/contact';
+import { CheckoutModal } from '@/themes/shared/commerce';
 import { getAllProducts } from '../data/products';
 import Link from 'next/link';
 import type { Product } from '../data/products';
 
 function CatalogoContent() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { items } = useSportsCart();
   const products = getAllProducts();
 
   const handleWhatsAppClick = (product: Product) => {
@@ -30,7 +33,7 @@ function CatalogoContent() {
   return (
     <main className="bg-white">
       {/* Header with Cart */}
-      <Header />
+      <Header onCheckoutClick={() => setIsCheckoutOpen(true)} />
 
       {/* Catalog Header */}
       <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 sm:px-6 py-12 sm:py-16">
@@ -68,6 +71,18 @@ function CatalogoContent() {
         language="es"
         onSuccess={handleContactSubmit}
       />
+
+      {/* Checkout Modal */}
+      {items.length > 0 && (
+        <CheckoutModal
+          isOpen={isCheckoutOpen}
+          onClose={() => setIsCheckoutOpen(false)}
+          cartItems={items}
+          onPaymentClick={() => {
+            console.log('Payment initiated from checkout');
+          }}
+        />
+      )}
     </main>
   );
 }

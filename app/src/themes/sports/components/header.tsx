@@ -5,7 +5,11 @@ import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useSportsCart } from '../context/CartContext';
 
-export function Header() {
+interface HeaderProps {
+  onCheckoutClick?: () => void;
+}
+
+export function Header({ onCheckoutClick }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { itemCount } = useSportsCart();
@@ -93,8 +97,13 @@ export function Header() {
 
           {/* Cart Panel */}
           <div className="fixed right-0 top-0 h-dvh w-full max-w-md bg-white shadow-2xl z-40 flex flex-col overflow-y-auto">
-            {/* Import CartComponent here */}
-            <CartPanelContent onClose={() => setIsCartOpen(false)} />
+            <CartPanelContent
+              onClose={() => setIsCartOpen(false)}
+              onCheckout={() => {
+                setIsCartOpen(false);
+                onCheckoutClick?.();
+              }}
+            />
           </div>
         </>
       )}
@@ -102,7 +111,12 @@ export function Header() {
   );
 }
 
-function CartPanelContent({ onClose }: { onClose: () => void }) {
+interface CartPanelContentProps {
+  onClose: () => void;
+  onCheckout: () => void;
+}
+
+function CartPanelContent({ onClose, onCheckout }: CartPanelContentProps) {
   const { items, removeItem, updateQuantity, total, clearCart } = useSportsCart();
 
   if (items.length === 0) {
@@ -187,7 +201,7 @@ function CartPanelContent({ onClose }: { onClose: () => void }) {
         {/* Buttons */}
         <div className="space-y-2">
           <button
-            // onClick={() => handleCheckout()}
+            onClick={onCheckout}
             className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition"
           >
             Ir a Checkout

@@ -2,14 +2,17 @@
 
 import { useState } from 'react';
 import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer } from './components';
-import { CartProvider } from './context/CartContext';
+import { CartProvider, useSportsCart } from './context/CartContext';
 import { ContactForm } from '@/themes/shared/contact';
+import { CheckoutModal } from '@/themes/shared/commerce';
 import { getFeaturedProducts } from './data/products';
 import type { Product } from './data/products';
 
 function SneakersCRContent() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { items } = useSportsCart();
   const products = getFeaturedProducts();
 
   const handleWhatsAppClick = (product: Product) => {
@@ -27,7 +30,7 @@ function SneakersCRContent() {
   return (
     <main className="bg-white">
       {/* Header with Cart */}
-      <Header />
+      <Header onCheckoutClick={() => setIsCheckoutOpen(true)} />
 
       {/* Hero */}
       <Hero />
@@ -57,6 +60,19 @@ function SneakersCRContent() {
         language="es"
         onSuccess={handleContactSubmit}
       />
+
+      {/* Checkout Modal */}
+      {items.length > 0 && (
+        <CheckoutModal
+          isOpen={isCheckoutOpen}
+          onClose={() => setIsCheckoutOpen(false)}
+          cartItems={items}
+          onPaymentClick={() => {
+            // Payment will be handled by PaymentModal in CheckoutModal
+            console.log('Payment initiated from checkout');
+          }}
+        />
+      )}
     </main>
   );
 }
