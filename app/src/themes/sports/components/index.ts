@@ -7,3 +7,4 @@ export { HowItWorks } from './how-it-works';
 export { Testimonials } from './testimonials';
 export { FAQ } from './faq';
 export { Footer } from './footer';
+export { WhatsAppFloat } from './whatsapp-float';

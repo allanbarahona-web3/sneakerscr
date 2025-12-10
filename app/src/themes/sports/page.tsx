@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer } from './components';
+import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer, WhatsAppFloat } from './components';
 import { CartProvider, useSportsCart } from './context/CartContext';
 import { ContactForm } from '@/themes/shared/contact';
 import { CheckoutModal } from '@/themes/shared/commerce';
@@ -73,6 +73,9 @@ function SneakersCRContent() {
           }}
         />
       )}
+
+      {/* WhatsApp Float Button */}
+      <WhatsAppFloat />
     </main>
   );
 }

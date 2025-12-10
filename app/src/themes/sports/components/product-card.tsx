@@ -1,15 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { MessageCircle, HelpCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import type { Product } from '../data/products';
 
 interface ProductCardProps {
   product: Product;
-  onWhatsAppClick: (product: Product) => void;
 }
 
-export function ProductCard({ product, onWhatsAppClick }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
   const handleConsultSize = () => {
     // Pre-fill message for size consultation
     const waLink = `https://wa.me/50687654321?text=Hola,%20estoy%20interesado%20en%20${encodeURIComponent(product.name)}%20-%20¿Qué%20tallas%20tienes%20disponibles?`;
@@ -62,28 +61,15 @@ export function ProductCard({ product, onWhatsAppClick }: ProductCardProps) {
           ))}
         </div>
 
-        {/* Buttons Container */}
-        <div className="flex gap-2 sm:gap-3">
-          {/* Consult Size Button */}
-          <button
-            onClick={handleConsultSize}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-2 sm:py-2.5 rounded-lg transition-all duration-200 text-xs sm:text-sm"
-            title={`Consultar tallas disponibles`}
-          >
-            <HelpCircle size={16} />
-            <span>Consultar talla</span>
-          </button>
-
-          {/* Lead/Info Button */}
-          <button
-            onClick={() => onWhatsAppClick(product)}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-white border-2 border-orange-500 text-orange-600 font-semibold py-2 sm:py-2.5 rounded-lg hover:bg-orange-50 active:bg-orange-100 transition-all duration-200 text-xs sm:text-sm"
-            title={`Pedir info por WhatsApp`}
-          >
-            <MessageCircle size={16} />
-            <span>Más info</span>
-          </button>
-        </div>
+        {/* Button */}
+        <button
+          onClick={handleConsultSize}
+          className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 text-sm"
+          title="Consultar tallas disponibles"
+        >
+          <MessageCircle size={18} />
+          <span>Consultar talla</span>
+        </button>
       </div>
     </div>
   );

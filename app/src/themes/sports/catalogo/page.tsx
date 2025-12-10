@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import { ProductCard } from '../components/product-card';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
-import { CartProvider, useSportsCart } from '../context/CartContext';
-import { ContactForm } from '@/themes/shared/contact';
-import { CheckoutModal } from '@/themes/shared/commerce';
+import { WhatsAppFloat } from '../components/whatsapp-float';
+import { CartProvider } from '../context/CartContext';
 import { getAllProducts, getUniqueBrands, getProductsByBrand } from '../data/products';
 import Link from 'next/link';
 import { X } from 'lucide-react';
@@ -14,11 +13,7 @@ import { useSearchParams } from 'next/navigation';
 import type { Product } from '../data/products';
 
 function CatalogoContent() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const { items } = useSportsCart();
   const searchParams = useSearchParams();
 
   // Auto-select brand from URL param
@@ -33,22 +28,15 @@ function CatalogoContent() {
   const brands = getUniqueBrands();
   const displayedProducts = selectedBrand ? getProductsByBrand(selectedBrand) : allProducts;
 
+  // Dummy function - ProductCard now handles WhatsApp directly
   const handleWhatsAppClick = (product: Product) => {
-    setSelectedProduct(product);
-    setIsContactOpen(true);
-  };
-
-  const handleContactSubmit = () => {
-    if (selectedProduct) {
-      const waLink = `https://wa.me/50687654321?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20más%20info%20sobre%3A%20${encodeURIComponent(selectedProduct.name)}`;
-      window.open(waLink, '_blank');
-    }
+    console.log('Product clicked:', product.name);
   };
 
   return (
     <main className="bg-white">
       {/* Header with Cart */}
-      <Header onCheckoutClick={() => setIsCheckoutOpen(true)} />
+      <Header />
 
       {/* Catalog Header */}
       <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 sm:px-6 py-12 sm:py-16">
@@ -147,25 +135,8 @@ function CatalogoContent() {
       {/* Footer */}
       <Footer />
 
-      {/* Contact Modal */}
-      <ContactForm
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        language="es"
-        onSuccess={handleContactSubmit}
-      />
-
-      {/* Checkout Modal */}
-      {items.length > 0 && (
-        <CheckoutModal
-          isOpen={isCheckoutOpen}
-          onClose={() => setIsCheckoutOpen(false)}
-          cartItems={items}
-          onPaymentClick={() => {
-            console.log('Payment initiated from checkout');
-          }}
-        />
-      )}
+      {/* WhatsApp Float Button */}
+      <WhatsAppFloat />
     </main>
   );
 }
