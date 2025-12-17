@@ -10,11 +10,23 @@ export class HostExtractionMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     try {
-      // Get the host from request header
-      const host = req.get('host');
+      // Try to get the host from request header (for direct connections)
+      let host = req.get('host');
+      
+      // If no host or it's ngrok/localhost, check Origin header (shows real origin of request)
+      // Origin tells us where the request ACTUALLY came from (e.g., barmentech.com)
+      if (!host || host.includes('ngrok') || host.includes('localhost')) {
+        const origin = req.get('origin');
+        if (origin) {
+          // Extract domain from origin (e.g., "https://www.barmentech.com" → "barmentech.com")
+          const url = new URL(origin);
+          host = url.hostname;
+          this.logger.debug(`Using Origin header domain: ${host}`);
+        }
+      }
 
       if (!host) {
-        // No host header, continue to JWT validation
+        // No host or origin header, continue to JWT validation
         // JWT will still validate the token
         return next();
       }

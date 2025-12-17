@@ -53,9 +53,15 @@ async function bootstrap() {
   app.use(cookieParser());
 
   // ============ 🌐 CORS (Cross-Origin Resource Sharing) ============
-  // Whitelist origin - prevents CSRF on modern APIs
+  // Whitelist origins - prevents CSRF on modern APIs
   app.enableCors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+    origin: [
+      'http://localhost:3001',
+      'http://localhost:3000',
+      'https://www.barmentech.com',
+      'https://barmentech.vercel.app',
+      'https://unspeciously-monospermous-jacqueline.ngrok-free.dev',
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

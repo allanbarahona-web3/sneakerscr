@@ -487,6 +487,8 @@ model Lead {
   mostImportantRightNow   String?
   commitment2To3Months    String?
   biggestPainPoint        String?
+  language                String?
+  service                 String?
   
   // Metadata
   status                  String    @default("new") // new, contacted, converted, rejected

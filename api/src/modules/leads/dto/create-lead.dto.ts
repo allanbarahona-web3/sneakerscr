@@ -79,4 +79,16 @@ export class CreateLeadDto {
   @MaxLength(500)
   @Transform(({ value }) => sanitizeString(value))
   biggestPainPoint?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(50)
+  @Transform(({ value }) => sanitizeString(value))
+  language?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  @Transform(({ value }) => sanitizeString(value))
+  service?: string;
 }
