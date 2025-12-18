@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer, WhatsAppFloat } from '@/themes/sports/components';
 import { CartProvider, useSportsCart } from '@/themes/sports/context/CartContext';
-import { ContactForm } from '@/themes/shared/contact';
-import { CheckoutModal } from '@/themes/shared/commerce';
+import { ContactForm } from '@allanbarahona-web3/shared';
+import { CheckoutModal } from '@allanbarahona-web3/shared';
 import { getFeaturedProducts } from '@/themes/sports/data/products';
 
 function SneakersCRContent() {
@@ -12,10 +12,6 @@ function SneakersCRContent() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const { items } = useSportsCart();
   const products = getFeaturedProducts();
-
-  const handleContactSubmit = () => {
-    // ContactForm will handle WhatsApp link directly
-  };
 
   return (
     <main className="bg-white">
@@ -44,24 +40,11 @@ function SneakersCRContent() {
       <Footer />
 
       {/* Contact Modal */}
-      <ContactForm
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        language="es"
-        onSuccess={handleContactSubmit}
-      />
+      <ContactForm isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Checkout Modal */}
       {items.length > 0 && (
-        <CheckoutModal
-          isOpen={isCheckoutOpen}
-          onClose={() => setIsCheckoutOpen(false)}
-          cartItems={items}
-          onPaymentClick={() => {
-            // Payment will be handled by PaymentModal in CheckoutModal
-            console.log('Payment initiated from checkout');
-          }}
-        />
+        <CheckoutModal isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
       )}
 
       {/* WhatsApp Float Button */}
