@@ -38,10 +38,8 @@ export function ProductCard({ product }: ProductCardProps) {
 
   // Generate unique Lead ID
   const generateLeadId = (): string => {
-    const date = new Date();
-    const dateStr = date.toISOString().slice(0, 10).replace(/-/g, '');
-    const random = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
-    return `SRC-${dateStr}-${random}`;
+    // Generate static ID to avoid hydration mismatch
+    return `SRC-${Math.abs(Math.random().toString().split('.')[1]?.slice(0, 8) || '12345678')}`;
   };
 
   const handleSizeSelected = (size: { us: string; eu: string }) => {

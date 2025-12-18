@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-import '../src/styles/tailwind.css';
-import '../src/styles/globals.css';
+import '../../src/styles/tailwind.css';
+import '../../src/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'SneakersCR | Tienda de Tenis',

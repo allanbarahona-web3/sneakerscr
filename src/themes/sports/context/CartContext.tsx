@@ -37,7 +37,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return [
         ...prevItems,
         {
-          id: `${product.id}-${Date.now()}`,
+          id: `${product.id}-${prevItems.length}`,
           productId: product.id,
           name: product.name,
           price: product.price,
