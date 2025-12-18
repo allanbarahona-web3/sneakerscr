@@ -1,11 +1,10 @@
 'use client';
 
 import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer, WhatsAppFloat } from './components';
-import { CartProvider, useSportsCart } from './context/CartContext';
+import { CartProvider } from './context/CartContext';
 import { getFeaturedProducts } from './data/products';
 
 function SneakersCRContent() {
-  const { items } = useSportsCart();
   const products = getFeaturedProducts();
 
   return (
