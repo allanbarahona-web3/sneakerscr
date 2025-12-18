@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer, WhatsAppFloat } from './components';
 import { CartProvider, useSportsCart } from './context/CartContext';
-import { ContactForm } from '@/themes/shared/contact';
-import { CheckoutModal } from '@/themes/shared/commerce';
+import { ContactForm } from '@allanbarahona-web3/shared/contact';
+import { CheckoutModal } from '@allanbarahona-web3/shared/commerce';
 import { getFeaturedProducts } from './data/products';
 
 function SneakersCRContent() {
