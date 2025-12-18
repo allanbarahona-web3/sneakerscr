@@ -2,16 +2,15 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import '../src/styles/tailwind.css';
 import '../src/styles/globals.css';
-import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'Táctica-X | SaaS Multi-Tenant eCommerce',
-  description: 'Platform para gestionar múltiples tiendas virtuales con dominios personalizados',
+  title: 'SneakersCR | Tienda de Tenis Deportivos',
+  description: 'Compra tenis deportivos de calidad con envío rápido a Costa Rica',
   manifest: '/manifest.json',
-  themeColor: '#D4FF00',
+  themeColor: '#FF6B35',
   icons: {
-    icon: '/themes/tactika-x/X Favicon.png',
-    apple: '/themes/tactika-x/X Favicon.png',
+    icon: '/Whatsapp.png',
+    apple: '/Whatsapp.png',
   },
 };
 
@@ -23,10 +22,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/themes/tactika-x/X Favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/themes/tactika-x/X Favicon.png" />
+        <link rel="icon" href="/Whatsapp.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/Whatsapp.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#D4FF00" />
+        <meta name="theme-color" content="#FF6B35" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -39,9 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        {children}
       </body>
     </html>
   );
