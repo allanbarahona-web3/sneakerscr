@@ -36,16 +36,22 @@ export function Header({ onCheckoutClick }: HeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <img
-              src={logoUrl}
-              alt="Logo"
-              loading="eager"
-              decoding="async"
-              crossOrigin="anonymous"
-              referrerPolicy="no-referrer"
-              style={{ height: 'auto', width: '140px', minWidth: '100px', display: 'block' }}
-            />
-          </Link>
+             {logoUrl ? (
+      <img
+        src={logoUrl}
+        alt="Logo"
+        loading="eager"
+        decoding="async"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+        style={{ height: 'auto', width: '140px', minWidth: '100px', display: 'block' }}
+      />
+    ) : (
+      <div className="text-xl sm:text-2xl font-bold text-gray-900">
+        sneakers<span className="text-orange-500">cr</span>
+      </div>
+    )}
+  </Link>
 
           {/* Desktop Menu - Center */}
           <div className="hidden md:flex gap-6 absolute left-1/2 -translate-x-1/2">
