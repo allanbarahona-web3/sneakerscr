@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useSportsCart } from '../context/CartContext';
