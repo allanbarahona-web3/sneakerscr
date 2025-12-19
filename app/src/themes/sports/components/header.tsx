@@ -24,14 +24,11 @@ export function Header({ onCheckoutClick }: HeaderProps) {
       <nav className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Image
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <img
               src="https://barmentech-saas.atl1.digitaloceanspaces.com/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
               alt="SneakersCR Logo"
-              width={150}
-              height={75}
-              className="h-auto w-auto max-w-[120px] sm:max-w-[150px]"
-              priority
+              className="h-auto w-[120px] sm:w-[150px]"
             />
           </Link>
 

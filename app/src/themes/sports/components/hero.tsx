@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { MessageCircle, Zap } from 'lucide-react';
 
 interface HeroProps {
@@ -16,13 +15,10 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
       <div className="max-w-3xl mx-auto text-center">
         {/* Logo / Brand */}
         <div className="mb-6 sm:mb-8">
-          <Image
+          <img
             src="https://barmentech-saas.atl1.digitaloceanspaces.com/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
             alt="SneakersCR Logo"
-            width={300}
-            height={150}
             className="h-auto w-auto mx-auto max-w-[200px] sm:max-w-[300px]"
-            priority
           />
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-widest mt-4">
             Calzado deportivo en Costa Rica 
