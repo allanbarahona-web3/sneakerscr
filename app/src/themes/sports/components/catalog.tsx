@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ProductCard } from './product-card';
 import { getUniqueBrands, getAllProducts } from '../data/products';
-import type { Product } from '../data/products';
+
 
 export function Catalog() {
   const router = useRouter();
