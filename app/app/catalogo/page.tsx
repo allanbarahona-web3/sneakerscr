@@ -7,7 +7,6 @@ import { getAllProducts, getUniqueBrands } from '@/themes/sports/data/products';
 import { CartProvider } from '@/themes/sports/context/CartContext';
 import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
-import type { Product } from '@/themes/sports/data/products';
 
 function CatalogContent() {
   const router = useRouter();
