@@ -1,12 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ProductCard } from './product-card';
 import { getUniqueBrands, getAllProducts } from '../data/products';
 
-
-export function Catalog() {
+function CatalogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const brandParam = searchParams.get('brand');
@@ -108,5 +107,11 @@ export function Catalog() {
     </section>
   );
 }
-
+export function Catalog() {
+  return (
+    <Suspense fallback={<div className="py-12 text-center">Cargando catálogo...</div>}>
+      <CatalogContent />
+    </Suspense>
+  );
+}
 export default Catalog;
