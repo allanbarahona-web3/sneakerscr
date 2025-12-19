@@ -11,13 +11,12 @@ interface HeroProps {
 
 export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
   const [tenant, setTenant] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     getTenantConfig().then((data) => {
       setTenant(data);
-      setLoading(false);
-    });
+          });
   }, []);
 
   const logoUrl = tenant?.config?.logo || 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80';

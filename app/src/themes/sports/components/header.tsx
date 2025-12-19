@@ -13,7 +13,7 @@ interface HeaderProps {
 
 export function Header({ onCheckoutClick }: HeaderProps) {
   const [tenant, setTenant] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isBrandMenuOpen, setIsBrandMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
   useEffect(() => {
     getTenantConfig().then((data) => {
       setTenant(data);
-      setLoading(false);
+      
     });
   }, []);
 
