@@ -21,8 +21,6 @@ export function Header({ onCheckoutClick }: HeaderProps) {
   const brands = getUniqueBrands();
 
   const logoUrl = '/themes/Sneakerscr/logosneakers.png';
-  `${process.env.NEXT_PUBLIC_API_URL}/files/logo?url=${encodeURIComponent(tenant.config.logo)}` : 
-  null;
 
   return (
     <>
