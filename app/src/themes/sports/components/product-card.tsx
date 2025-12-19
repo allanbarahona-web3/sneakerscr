@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { X, Gift } from 'lucide-react';
 import type { Product } from '../data/products';
 import { ShippingModal } from './ShippingModal';
@@ -35,6 +34,13 @@ export function ProductCard({ product }: ProductCardProps) {
   const [showShippingModal, setShowShippingModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState<{ us: string; eu: string } | null>(null);
   const [currentLeadId, setCurrentLeadId] = useState<string>('');
+  const [imageError, setImageError] = useState(false);
+
+  // Get image URL through proxy
+  const getImageUrl = (imageUrl: string) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
+    return `${apiUrl}/files/logo?url=${encodeURIComponent(imageUrl)}`;
+  };
 
   // Generate unique Lead ID
   const generateLeadId = (): string => {
@@ -178,13 +184,21 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Image Container */}
         <div className="relative h-64 sm:h-72 md:h-80 bg-gray-50 overflow-hidden flex-shrink-0">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          {!imageError ? (
+            <img
+              src={getImageUrl(product.image)}
+              alt={product.name}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-gray-100">
+              <div className="text-center p-4">
+                <div className="text-4xl mb-2">👟</div>
+                <p className="text-sm text-gray-500">{product.name}</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Content Container */}
