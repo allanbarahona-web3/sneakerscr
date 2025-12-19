@@ -27,7 +27,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
     });
   }, []);
 
-  const logoUrl = tenant?.config?.logo || 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80';
+  const logoUrl = tenant?.config?.logo;
 
   return (
     <>

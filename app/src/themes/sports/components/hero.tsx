@@ -19,7 +19,7 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
           });
   }, []);
 
-  const logoUrl = tenant?.config?.logo || 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80';
+  const logoUrl = tenant?.config?.logo;
   const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n`;
 
   return (
