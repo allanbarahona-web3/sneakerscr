@@ -10,7 +10,7 @@ export async function getTenantConfig() {
   try {
     const res = await fetch(
       `${API_URL}/api/v1/tenants/slug/${TENANT_SLUG}`,
-      { cache: 'revalidate', next: { revalidate: 3600 } } // Cache 1 hora
+      { next: { revalidate: 3600 } }
     );
     
     if (!res.ok) throw new Error('Failed to fetch tenant');
