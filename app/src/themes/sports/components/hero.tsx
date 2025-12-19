@@ -2,24 +2,43 @@
 
 import Link from 'next/link';
 import { MessageCircle, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { getTenantConfig } from '@/lib/api-server';
 
 interface HeroProps {
   whatsappNumber?: string;
 }
 
 export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
-  const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20más%20información`;
+  const [tenant, setTenant] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getTenantConfig().then((data) => {
+      setTenant(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const logoUrl = tenant?.config?.logo || 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80';
+  const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n`;
 
   return (
-    <section className="min-h-dvh flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 sm:px-6 py-16 sm:py-20">
+    <section id="inicio" className="min-h-dvh flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 sm:px-6 py-16 sm:py-20">
       <div className="max-w-3xl mx-auto text-center">
         {/* Logo / Brand */}
         <div className="mb-6 sm:mb-8">
-          <img
-            src="https://barmentech-saas.atl1.digitaloceanspaces.com/barmentech-saas/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
-            alt="SneakersCR Logo"
-            className="h-auto w-auto mx-auto max-w-[200px] sm:max-w-[300px]"
-          />
+          {logoUrl ? (
+            <img
+              src={logoUrl}
+              alt={tenant?.name || 'SneakersCR Logo'}
+              loading="eager"
+              decoding="async"
+              crossOrigin="anonymous"
+              referrerPolicy="no-referrer"
+              style={{ height: 'auto', width: '280px', maxWidth: '100%', margin: '0 auto', minWidth: '200px', display: 'block' }}
+            />
+          ) : null}
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-widest mt-4">
             Calzado deportivo en Costa Rica 
           </p>
@@ -103,6 +122,10 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
       </div>
     </section>
   );
+}
+
+export function HeroContent(props: HeroProps) {
+  return <Hero {...props} />;
 }
 
 export default Hero;

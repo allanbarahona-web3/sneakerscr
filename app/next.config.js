@@ -4,6 +4,33 @@ const withPWA = require('next-pwa')({
 });
 
 module.exports = withPWA({
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'barmentech-saas.atl1.digitaloceanspaces.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        pathname: '/**',
+      },
+    ],
+  },
+  headers: async () => {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ];
+  },
   webpack: (config) => {
     return config;
   },

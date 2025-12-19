@@ -9,7 +9,7 @@ interface FeaturedProductsProps {
 
 export function FeaturedProducts({ products }: FeaturedProductsProps) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
+    <section id="catalogo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14 md:mb-16">

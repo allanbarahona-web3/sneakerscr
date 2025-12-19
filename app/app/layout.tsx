@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import '../src/styles/tailwind.css';
 import '../src/styles/globals.css';
@@ -7,11 +7,16 @@ export const metadata: Metadata = {
   title: 'SneakersCR | Tienda de Tenis Deportivos',
   description: 'Compra tenis deportivos de calidad con envío rápido a Costa Rica',
   manifest: '/manifest.json',
-  themeColor: '#FF6B35',
   icons: {
     icon: '/Whatsapp.png',
     apple: '/Whatsapp.png',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#FF6B35',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 interface RootLayoutProps {

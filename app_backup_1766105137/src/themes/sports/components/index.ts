@@ -1,0 +1,10 @@
+export { Hero } from './hero';
+export { Header } from './header';
+export { FeaturedProducts } from './featured-products';
+export { ProductCard } from './product-card';
+export { Benefits } from './benefits';
+export { HowItWorks } from './how-it-works';
+export { Testimonials } from './testimonials';
+export { FAQ } from './faq';
+export { Footer } from './footer';
+export { WhatsAppFloat } from './whatsapp-float';

@@ -1,8 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { getTenantConfig } from '@/lib/api-client';
 import { useSportsCart } from '../context/CartContext';
 import { getUniqueBrands } from '../data/products';
 
@@ -11,11 +12,22 @@ interface HeaderProps {
 }
 
 export function Header({ onCheckoutClick }: HeaderProps) {
+  const [tenant, setTenant] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isBrandMenuOpen, setIsBrandMenuOpen] = useState(false);
   const { itemCount } = useSportsCart();
   const brands = getUniqueBrands();
+
+  useEffect(() => {
+    getTenantConfig().then((data) => {
+      setTenant(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const logoUrl = tenant?.config?.logo || 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80';
 
   return (
     <>
@@ -25,9 +37,13 @@ export function Header({ onCheckoutClick }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="https://barmentech-saas.atl1.digitaloceanspaces.com/barmentech-saas/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
-              alt="SneakersCR Logo"
-              className="h-auto w-[120px] sm:w-[150px]"
+              src={logoUrl}
+              alt="Logo"
+              loading="eager"
+              decoding="async"
+              crossOrigin="anonymous"
+              referrerPolicy="no-referrer"
+              style={{ height: 'auto', width: '140px', minWidth: '100px', display: 'block' }}
             />
           </Link>
 
@@ -37,7 +53,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
               Inicio
             </Link>
             <Link
-              href="/"
+              href="/catalogo"
               className="text-sm font-medium text-gray-600 hover:text-orange-600 transition"
             >
               Catálogo
@@ -53,7 +69,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
                 {brands.map((brand) => (
                   <Link
                     key={brand}
-                    href="/"
+                    href={`/catalogo?brand=${encodeURIComponent(brand)}`}
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 first:rounded-t-lg last:rounded-b-lg"
                   >
                     {brand}
@@ -62,9 +78,9 @@ export function Header({ onCheckoutClick }: HeaderProps) {
               </div>
             </div>
 
-            <a href="#faq" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition">
+            <Link href="/#faq" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition">
               Preguntas
-            </a>
+            </Link>
           </div>
 
           {/* Cart Icon */}
@@ -95,12 +111,13 @@ export function Header({ onCheckoutClick }: HeaderProps) {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-gray-50 px-4 py-4 space-y-3">
-            <Link href="/sports" className="block text-sm font-medium text-gray-900 hover:text-orange-600">
+            <Link href="/" className="block text-sm font-medium text-gray-900 hover:text-orange-600" onClick={() => setIsMobileMenuOpen(false)}>
               Inicio
             </Link>
             <Link
-              href="/sports/catalogo"
+              href="/catalogo"
               className="block text-sm font-medium text-gray-900 hover:text-orange-600"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Catálogo
             </Link>
@@ -122,7 +139,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
                   {brands.map((brand) => (
                     <Link
                       key={brand}
-                      href={`/sports/catalogo?brand=${encodeURIComponent(brand)}`}
+                      href={`/catalogo?brand=${encodeURIComponent(brand)}`}
                       className="block text-sm text-gray-700 hover:text-orange-600"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -133,9 +150,9 @@ export function Header({ onCheckoutClick }: HeaderProps) {
               )}
             </div>
 
-            <a href="#faq" className="block text-sm font-medium text-gray-900 hover:text-orange-600">
+            <Link href="/#faq" className="block text-sm font-medium text-gray-900 hover:text-orange-600" onClick={() => setIsMobileMenuOpen(false)}>
               Preguntas
-            </a>
+            </Link>
           </div>
         )}
       </nav>

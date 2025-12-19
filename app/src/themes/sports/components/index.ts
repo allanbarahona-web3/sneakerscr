@@ -1,6 +1,7 @@
 export { Hero } from './hero';
-export { Header } from './header';
+export { default as Header } from './header';
 export { FeaturedProducts } from './featured-products';
+export { Catalog } from './catalog';
 export { ProductCard } from './product-card';
 export { Benefits } from './benefits';
 export { HowItWorks } from './how-it-works';

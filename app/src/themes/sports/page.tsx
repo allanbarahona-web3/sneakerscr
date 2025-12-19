@@ -1,16 +1,14 @@
-'use client';
-
 import { Hero, Header, FeaturedProducts, Benefits, HowItWorks, Testimonials, FAQ, Footer, WhatsAppFloat } from './components';
 import { CartProvider } from './context/CartContext';
 import { getFeaturedProducts } from './data/products';
 
-function SneakersCRContent() {
+async function SneakersCRContent() {
   const products = getFeaturedProducts();
 
   return (
     <main className="bg-white">
       {/* Header with Cart */}
-      <Header onCheckoutClick={() => {}} />
+      <Header />
 
       {/* Hero */}
       <Hero />
