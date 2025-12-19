@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useSportsCart } from '../context/CartContext';
@@ -23,19 +24,24 @@ export function Header({ onCheckoutClick }: HeaderProps) {
       <nav className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/sports" className="flex items-center gap-2">
-            <div className="text-xl sm:text-2xl font-bold text-gray-900">
-              sneakers<span className="text-orange-500">cr</span>
-            </div>
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="https://barmentech-saas.atl1.digitaloceanspaces.com/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
+              alt="SneakersCR Logo"
+              width={150}
+              height={75}
+              className="h-auto w-auto max-w-[120px] sm:max-w-[150px]"
+              priority
+            />
           </Link>
 
           {/* Desktop Menu - Center */}
           <div className="hidden md:flex gap-6 absolute left-1/2 -translate-x-1/2">
-            <Link href="/sports" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition">
+            <Link href="/" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition">
               Inicio
             </Link>
             <Link
-              href="/sports/catalogo"
+              href="/"
               className="text-sm font-medium text-gray-600 hover:text-orange-600 transition"
             >
               Catálogo
@@ -51,7 +57,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
                 {brands.map((brand) => (
                   <Link
                     key={brand}
-                    href={`/sports/catalogo?brand=${encodeURIComponent(brand)}`}
+                    href="/"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 first:rounded-t-lg last:rounded-b-lg"
                   >
                     {brand}
