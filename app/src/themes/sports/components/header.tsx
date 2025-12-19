@@ -20,14 +20,7 @@ export function Header({ onCheckoutClick }: HeaderProps) {
   const { itemCount } = useSportsCart();
   const brands = getUniqueBrands();
 
-  useEffect(() => {
-    getTenantConfig().then((data) => {
-      setTenant(data);
-      
-    });
-  }, []);
-
-  const logoUrl = tenant?.config?.logo ? 
+  const logoUrl = '/themes/Sneakerscr/logosneakers.png';
   `${process.env.NEXT_PUBLIC_API_URL}/files/logo?url=${encodeURIComponent(tenant.config.logo)}` : 
   null;
 

@@ -13,13 +13,7 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
   const [tenant, setTenant] = useState<any>(null);
   
 
-  useEffect(() => {
-    getTenantConfig().then((data) => {
-      setTenant(data);
-          });
-  }, []);
-
-  const logoUrl = tenant?.config?.logo;
+  const logoUrl = '/themes/Sneakerscr/logosneakers.png';
   const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n`;
 
   return (
