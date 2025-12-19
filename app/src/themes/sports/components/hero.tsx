@@ -15,11 +15,9 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
       <div className="max-w-3xl mx-auto text-center">
         {/* Logo / Brand */}
         <div className="mb-6 sm:mb-8">
-          <img
-            src="https://barmentech-saas.atl1.digitaloceanspaces.com/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
-            alt="SneakersCR Logo"
-            className="h-auto w-auto mx-auto max-w-[200px] sm:max-w-[300px]"
-          />
+          <div className="bg-orange-500 text-white font-bold px-6 py-4 rounded-xl text-3xl sm:text-4xl inline-block mb-4">
+            SneakersCR
+          </div>
           <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-widest mt-4">
             Calzado deportivo en Costa Rica 
           </p>

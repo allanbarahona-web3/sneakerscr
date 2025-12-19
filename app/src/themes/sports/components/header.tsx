@@ -25,11 +25,9 @@ export function Header({ onCheckoutClick }: HeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <img
-              src="https://barmentech-saas.atl1.digitaloceanspaces.com/Sneakerscr/LogoSneakers%20(500%20x%20250%20px).png"
-              alt="SneakersCR Logo"
-              className="h-auto w-[120px] sm:w-[150px]"
-            />
+            <div className="bg-orange-500 text-white font-bold px-3 py-2 rounded-lg text-sm sm:text-base">
+              SneakersCR
+            </div>
           </Link>
 
           {/* Desktop Menu - Center */}
