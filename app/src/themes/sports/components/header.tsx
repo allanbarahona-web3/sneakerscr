@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
-import { getTenantConfig } from '@/lib/api-client';
 import { useSportsCart } from '../context/CartContext';
 import { getUniqueBrands } from '../data/products';
 
@@ -12,8 +11,6 @@ interface HeaderProps {
 }
 
 export function Header({ onCheckoutClick }: HeaderProps) {
-  const [tenant, setTenant] = useState<any>(null);
-  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isBrandMenuOpen, setIsBrandMenuOpen] = useState(false);

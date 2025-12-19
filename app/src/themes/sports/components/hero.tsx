@@ -2,17 +2,12 @@
 
 import Link from 'next/link';
 import { MessageCircle, Zap } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { getTenantConfig } from '@/lib/api-server';
 
 interface HeroProps {
   whatsappNumber?: string;
 }
 
 export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
-  const [tenant, setTenant] = useState<any>(null);
-  
-
   const logoUrl = '/themes/Sneakerscr/logosneakers.png';
   const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=Hola,%20vengo%20de%20sneakerscr.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n`;
 
@@ -24,7 +19,7 @@ export function Hero({ whatsappNumber = '+50687654321' }: HeroProps) {
           {logoUrl ? (
             <img
               src={logoUrl}
-              alt={tenant?.name || 'SneakersCR Logo'}
+              alt="SneakersCR Logo"
               loading="eager"
               decoding="async"
               crossOrigin="anonymous"
