@@ -27,7 +27,9 @@ export function Header({ onCheckoutClick }: HeaderProps) {
     });
   }, []);
 
-  const logoUrl = tenant?.config?.logo;
+  const logoUrl = tenant?.config?.logo ? 
+  `${process.env.NEXT_PUBLIC_API_URL}/files/logo?url=${encodeURIComponent(tenant.config.logo)}` : 
+  null;
 
   return (
     <>
