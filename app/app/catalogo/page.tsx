@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Header, Footer, ProductCard, WhatsAppFloat } from '@/themes/sports/components';
 import { getAllProducts, getUniqueBrands } from '@/themes/sports/data/products';
 import { CartProvider } from '@/themes/sports/context/CartContext';
 import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 function CatalogContent() {
   const router = useRouter();
@@ -142,7 +144,9 @@ function CatalogContent() {
 export default function CatalogPage() {
   return (
     <CartProvider>
-      <CatalogContent />
+      <Suspense fallback={<div className="w-full h-screen flex items-center justify-center">Cargando catálogo...</div>}>
+        <CatalogContent />
+      </Suspense>
     </CartProvider>
   );
 }
